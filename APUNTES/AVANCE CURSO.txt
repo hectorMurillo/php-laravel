@@ -1,0 +1,92 @@
+Para empezar a trabajar con laravel 
+se requiere:}
+PHP
+MYSQL
+COMPOSER
+TERMINAL DECENTE <--
+******RECOMENDADO PERO NO OBLIGATORIO:
+GIT
+NODEJS
+NPM
+[WAMPP, XAMPP]
+(apache http server):
+Es el servidor web mas usado en el mundo, pero como pasa en muchos casos,
+lo mas usado no es siempre lo mejor, solo lo que se conoce mas.
+Apache tiene  muchas caracteristicas positivas, pero su gran deficiencia es el rendimiento,
+cosas que es sumamnete importante en las apps de hoy en dia 
+
+Apache crea hilos y sub-hilos para manejar las coxiones adicionales. El administrador puede configurar el servidor para
+controlar el numero maximo de hilos permitidos.
+Esta configuracion depende de la memoria disponible de la maquina.
+
+NGINX: Es un servidor HTTPde codigo abierto que incluye servicios de correo electronico con acceso a internet 
+Message Protocol(IMAP) y al servidor Post Office Protocol (POP). Además, NGINX	 esta listo
+para ser utilizado como un proxy inverso. En este modo, se utilioza para equilibrar la carga entre servidores de back-end
+tambien para ser utilizado como cache en un servidor back-end lento.
+
+
+[LARAGON]<-- NOS AYUDA A INSTALAR TODO..
+
+******************************************************
+Primeramente para instalar Laravel desde composer lo que se tiene que correr 
+composer global require laravel/installer
+
+Crear un proyecto con composer de laravel:
+composer create-project laravel/laravel nombre_project [Este ejemplo se realiza cuando no esta instalado Laravel]
+
+cuando laravel ya esta instalado lo que se hace es 
+laravel new nombre_project
+
+
+Una vez que se ha terminado de instalar
+ngnix te crea un host de prueba que te puede ayudar a visualizar el proyecto
+el cual puedes acceder con la url 
+nombre_project.dev....
+
+SUBLIME TEMA, PHP BLADE PARA QUE RECONOZCA LA SINTAXIS
+
+<<<<<<<<<<<<<<<<<<<RUTAS>>>>>>>>>>>>>>>>
+Las rutas se encontraban en 
+APP/HTTP/ROUTES.PHP
+Ahora se encuentra en 
+ROUTES/WEB.PHP
+estas son las URL de entrada de nuestra app 
+se cargan solas con ayuda del framework...
+
+Las diferencia entre las rutas:[
+
+	//NOMBRE DE RUTAS... De este manera se puede hablar por el nombre de la ruta en vez de usar la ruta en si
+Route::get('Contactame',['as'=>'contactos',function(){
+	return "<h3>CONTACTO</h3>";
+}]);
+
+//PARAMETRO OBLIGATORIO
+Route::get('saludos/{nombre}',function($nombre){
+	return "Saludos $nombre";
+});
+
+//PARAMETRO NO OBLIGATORIO
+
+Route::get('saludos/{nombre?}',function($nombre = "Invitado"){
+	return "Saludos $nombre";
+});
+
+//PARAMETRO Validado [Se agrega el where con el parametro y la expresion regular].
+
+Route::get('saludos/{nombre?}',function($nombre = "Invitado"){
+	return "Saludos $nombre";
+})->where('nombre',"[A-Za-z]+");
+
+]
+
+>>>>VISTAS 
+
+Lo que ve el usuario final (resources>views)
+
+
+
+Blade es el motor de plantillas que viene con Laravel y se puede agregar 
+facilmente a un codigo que esta escrito en php con el antecesor 
+.blade.php y permite la sintaxis de php plano....
+
+
